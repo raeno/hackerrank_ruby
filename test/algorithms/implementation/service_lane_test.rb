@@ -24,29 +24,17 @@
 # For each test case, print the number that represents the largest vehicle type that can pass through the service lane.
 #
 #====
+require 'test_helper'
+require 'algorithms/implementation/service_lane'
 
 module Algorithms
   module Implementation
-    class ServiceLane
+    class ServiceLaneTest < TestCase
 
-      def initialize(width_array)
-        @width_array = width_array
-      end
-
-      def largest_vehicle(start,finish)
-        @width_array[(start..finish)].min
+      def test_calculates_largest_vehicle
+        service_lane = ServiceLane.new [2,3,1,2,3,2,3,3]
+        
       end
     end
   end
 end
-
-def run
-  _, cases = gets.strip.split(' ').map(&:to_i)
-  width_array = gets.strip.split(' ').map(&:to_i)
-  cases.times.each do
-    start, finish = gets.strip.split(' ').map(&:to_i)
-    puts Algorithms::Implementation::ServiceLane.new(width_array).run(start,finish)
-  end
-end
-
-run unless ENV['TEST']

@@ -16,25 +16,20 @@
 #
 #====
 
+require 'test_helper'
+require 'algorithms/implementation/cut_the_sticks'
+
 module Algorithms
   module Implementation
-    class CutTheSticks
+    class CutTheSticksTest < TestCase
 
-      def cut(sticks)
-        until sticks.empty? do
-          puts sticks.size
-          cut_length = sticks.min
-          sticks = sticks.map { |el| el - cut_length }.select { |el| el > 0 } 
-        end 
+      subject { Algorithms::Implementation::CutTheSticks.new }
+
+      def test_cut_the_sticks_print_sticks_left_after_each_cut
+        assert_output %w(6 4 2 1).on_separate_lines do
+          subject.cut [5,4,4,2,2,8]
+        end
       end
     end
   end
 end
-
-def run
-  _ = gets
-  arr = gets.strip.split(' ').map(&:to_i)
-  Algorithms::Implementation::CutTheSticks.new.cut(arr)
-end
-
-run unless ENV['TEST']
