@@ -7,6 +7,7 @@ task :test do
   Dir.glob('./test/**/*_test.rb').each { |file| require file}
 end
 
+desc 'Annotates solution with documentation from doc folder'
 task :annotate do
   $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
   require 'annotate'
